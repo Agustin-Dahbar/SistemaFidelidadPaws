@@ -27,14 +27,14 @@
                         <div class="col-md-3">
                             <div class="card mb-4">
                                 <!-- Imagen del producto -->
-                                <img src="Imagenes/Eukanuba15k.jpg" class="card-img-top" alt="Imagen del producto">
+                                <img src='<%# Eval("ImagenUrl") %>' class="card-img-top" alt="Imagen del producto">
                                 <div class="card-body text-center">
                                     <!-- Nombre del producto -->
-                                    <h5 class="card-title"><%# Eval("Nombre") %></h5>
+                                    <h5 id="nombreProducto" class="card-title"><%# Eval("Nombre") %></h5>
                                     <!-- Precio del producto -->
-                                    <p class="card-text">Precio: $<%# Eval("Precio") %></p>
+                                    <p id="precioProducto" class="card-text">Precio: $<%# Eval("Precio") %></p>
                                     <!-- Puntos del producto -->
-                                    <p class="card-text">Puntos: <%# Eval("Puntos") %></p>
+                                    <p id="puntosProducto" class="card-text">Puntos: <%# Eval("Puntos") %></p>
                                 </div>
                             </div>
                         </div>
@@ -52,12 +52,33 @@
             <style>
                 #titulo
                 {
-                    font-family:Verdana;
+                    font-family: Calibri;
                 }
 
                 #subtitulo
                 {
+                    font-family: 'Trebuchet MS';
 
+                }
+
+                #nombreProducto
+                {
+                    font-family:'Calibri';
+                    color:#ff6a00;
+                }
+
+                #precioProducto
+                {
+                    font-family: 'Malgun Gothic';
+                    color:#ff6a00;
+                    margin-top:16%;
+                }
+
+                #puntosProducto
+                {
+                    font-family: 'Malgun Gothic';
+                    color:#ff6a00;
+                    margin-top:-5%;
                 }
             </style>
         </body>

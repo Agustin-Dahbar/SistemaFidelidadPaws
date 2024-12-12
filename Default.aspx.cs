@@ -17,10 +17,10 @@ namespace SistemaFidelidadPaws
                 // Lista simulada de productos (puedes reemplazarla con datos de tu base de datos)
                 List<Producto> productos = new List<Producto>
                 {
-                    new Producto("Hola", 50, 5, "Imagenes/Eukanuba15k.jpg"),
-                    new Producto("Chau", 100, 10, "Imagenes/Logo Paws.jpg"),
-                    new Producto("Agustin", 1500, 150, "Imagenes/MonAmi.jpg"),
-                    new Producto("Curry", 2000, 200, "Imagenes/ProPlan18k")
+                    new Producto("Eukanuba 15K", 50, 5, "Imagenes/Eukanuba15k.jpg"),
+                    new Producto("Logo de nuestra marca :)", 100, 10, "Imagenes/Logo Paws.jpg"),
+                    new Producto("Mon Ami & Bocadillos", 1500, 150, "Imagenes/MonAmi.jpg"),
+                    new Producto("ProPlan 18K", 2000, 200, "Imagenes/ProPlan18k.jpg")
                 };
 
                 // Enlazar la lista de productos al Repeater
