@@ -1,0 +1,201 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SistemaFidelidadPaws.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Sistema de fidelidad Paws</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- JS de Bootstrap (incluye popper y bundle) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</head>
+
+
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+    <header class="d-flex">
+        <!--BUSCADOR-->
+        <div id="containerBuscador">
+            <input id="txtBusqueda" class="input-header form-control"  autocomplete="off" type="search" name="q" placeholder="Buscar" style="border:none; border-bottom: 2px solid lightblue">
+            <button id="button" type="submit" class="btn btn-desktop-search" value="Buscar" aria-label="Buscar" style="position:absolute; left:80%;">
+                <svg id="svgLupa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"></path>
+                </svg>                            
+            </button>
+        </div>
+
+        <!-- LOGO -->
+            <a class="navbar-brand" href="#" style="position:absolute;left:45%";>
+                <asp:ImageButton runat="server" src="Imagenes/Logo Paws.jpg" style="display:block; height:150px;"/>
+            </a>        
+
+        <!-- Autenticación -->
+        <div id="auth" style="position:absolute;left:80%; top:7%;"data-store="account-links">
+                <a href="/account/register">CREAR CUENTA</a>
+                <hr style="border: 1px solid #3589bf; margin: 5px 0px;"/>
+                <a href="/account/login/">INICIAR SESIÓN</a>
+        </div>
+    
+    </header>
+
+        <!--Navbar-->
+        <div class="d-flex justify-content-center">
+            <nav class="navbar navbar-expand-lg">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+                <ul id="ul" class="navbar-nav">
+                    <hr style="border: 1px solid #ff6a00; margin: 5px 0;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Default.aspx"> INICIO </a>
+                    </li>
+                    <hr style="border: 1px solid #ff6a00; margin: 5px 0;"/>
+                    <li>
+                        <a class="nav-link" href=""> PRODUCTOS</a>
+                    </li>
+                    <hr style="border: 1px solid #ff6a00; margin: 5px 0;">
+                    <li>
+                        <a class="nav-link" href=""> CONTACTO</a>
+                    </li>
+                    <hr style="border: 1px solid #ff6a00; margin: 5px 0;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contact.aspx"> CANJEAR PUNTOS </a>
+                    </li>
+                    <hr style="border: 1px solid #ff6a00; margin: 5px 0;">
+                </ul>
+            </nav>
+        </div>
+
+
+
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - Sistema de Fidelidad Paws</p>
+            </footer>
+        </div>
+    </form>
+    
+    <!--CSS-->
+    <style>
+
+        .navbar
+        {
+            width:50%;
+            margin-top:11.5%;
+        }
+
+        
+        .nav-link 
+        {   
+            color:#ff6a00;
+            font-size:12px;
+            font-family:'Calibri;
+        }
+
+        .nav-link:hover
+        {
+            color:#3589bf; 
+        }
+
+        .nav-link.active
+        {
+            color:violet;
+        }
+
+
+        .navbar 
+        {
+            border-top: 2px solid #ff6a00;
+            border-bottom: 2px solid #ff6a00;
+            padding: 10px 20px;
+        }
+
+        #ul
+        {
+            width:100%;
+            justify-content:space-between;
+        }
+
+        #containerBuscador
+        {
+            display:flex;
+            position:absolute;
+            left:8%;
+            top:7%;
+        }
+        
+        #svgLupa
+        {
+            height: 1em;
+        }
+
+        a
+        {
+            font-size:10px;
+            font-family:Calibri;
+            color:#3589bf;
+            text-decoration:none;
+
+        }
+
+        #txtBusqueda
+        {
+            border-radius: 0px
+        }
+
+        #txtBusqueda:focus
+        {
+         border: 3px solid red;
+        }
+
+        #button:focus
+        {
+            border:none;
+        }
+
+        
+ 
+    </style>
+    
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/Scripts/bootstrap.js") %>
+    </asp:PlaceHolder>
+</body>
+</html>
