@@ -50,8 +50,8 @@
     <header class="d-flex">
         <!--BUSCADOR-->
         <div id="containerBuscador">
-            <input id="txtBusqueda" class="input-header form-control"  autocomplete="off" type="search" name="q" placeholder="Buscar" style="border:none; border-bottom: 2px solid lightblue">
-            <button id="button" type="submit" class="btn btn-desktop-search" value="Buscar" aria-label="Buscar" style="position:absolute; left:80%;">
+            <input runat="server" id="txtBusqueda" class="input-header form-control"  autocomplete="off" type="search" name="q" placeholder="Buscar" style="border:none; border-bottom: 2px solid lightblue">
+            <button runat="server" id="button" type="submit" class="btn btn-desktop-search" value="Buscar" aria-label="Buscar" style="position:absolute; left:80%;">
                 <svg id="svgLupa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"></path>
                 </svg>                            
@@ -64,10 +64,10 @@
             </a>        
 
         <!-- Autenticación -->
-        <div id="auth" style="position:absolute;left:80%; top:7%;"data-store="account-links">
-                <a href="/account/register">CREAR CUENTA</a>
+        <div id="auth" style="position:absolute;left:88%; top:7%;"data-store="account-links">
+                <a href="CrearCuenta.aspx">CREAR CUENTA</a>
                 <hr style="border: 1px solid #3589bf; margin: 5px 0px;"/>
-                <a href="/account/login/">INICIAR SESIÓN</a>
+                <a href="IniciarSesion.aspx">INICIAR SESIÓN</a>
         </div>
     
     </header>
@@ -81,19 +81,19 @@
                 <ul id="ul" class="navbar-nav">
                     <hr style="border: 1px solid #ff6a00; margin: 5px 0;">
                     <li class="nav-item">
-                        <a class="nav-link" href="Default.aspx"> INICIO </a>
+                        <a class="nav-link" href="Inicio.aspx"> INICIO </a>
                     </li>
                     <hr style="border: 1px solid #ff6a00; margin: 5px 0;"/>
                     <li>
-                        <a class="nav-link" href=""> PRODUCTOS</a>
+                        <a class="nav-link" href="Registrarse.aspx"> PRODUCTOS</a>
                     </li>
                     <hr style="border: 1px solid #ff6a00; margin: 5px 0;">
                     <li>
-                        <a class="nav-link" href=""> CONTACTO</a>
+                        <a class="nav-link" href="ViewSwitcher.ascx"> CONTACTO</a>
                     </li>
                     <hr style="border: 1px solid #ff6a00; margin: 5px 0;">
                     <li class="nav-item">
-                        <a class="nav-link" href="Contact.aspx"> CANJEAR PUNTOS </a>
+                        <a class="nav-link" href="PawsClub.aspx"> CANJEAR PUNTOS </a>
                     </li>
                     <hr style="border: 1px solid #ff6a00; margin: 5px 0;">
                 </ul>
@@ -114,6 +114,13 @@
     
     <!--CSS-->
     <style>
+        a
+        {
+            font-size:13px;
+            font-family:Calibri;
+            color:#3589bf;
+
+        }
 
         .navbar
         {
@@ -125,8 +132,8 @@
         .nav-link 
         {   
             color:#ff6a00;
-            font-size:12px;
-            font-family:'Calibri;
+            font-size:14px;
+            font-family:'Calibri'
         }
 
         .nav-link:hover
@@ -166,15 +173,6 @@
             height: 1em;
         }
 
-        a
-        {
-            font-size:10px;
-            font-family:Calibri;
-            color:#3589bf;
-            text-decoration:none;
-
-        }
-
         #txtBusqueda
         {
             border-radius: 0px
@@ -189,9 +187,6 @@
         {
             border:none;
         }
-
-        
- 
     </style>
     
     <asp:PlaceHolder runat="server">

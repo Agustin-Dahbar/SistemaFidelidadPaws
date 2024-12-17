@@ -5,13 +5,19 @@ using System.Web;
 
 namespace SistemaFidelidadPaws.Clases
 {
+    [Serializable]
     public class Producto
     {
-        private string nombre;
-        private int precio;
-        private int puntos;
-        private string imagenUrl;
+     
+        //Atributos/Propiedades
+        public string nombre { get; set; }
+        public int precio { get; set; }
+        public int puntos { get; set; }
+        
+        private int stock { get; set; }
+        public string imagenUrl { get; set; }
 
+        //Constructor
         public Producto(string nombre, int precio, int puntos, string imagenUrl)
         {
             setNombre(nombre);
@@ -20,27 +26,41 @@ namespace SistemaFidelidadPaws.Clases
             setImagenUrl(imagenUrl);
         }
 
-        public string Nombre
+        //Producto para la lista 'ProductosStock' de 'PawsClub'
+        public Producto(string nombreProducto, int cantidadStock)
         {
-            get { return nombre; }
+            this.nombre = nombreProducto;
+            this.stock = cantidadStock;
         }
 
-        public int Precio
+        //Getters
+        public string getNombre()
+        {
+            return this.nombre;
+        }
+
+        public int getPrecio
         {
             get { return precio; }
         }
 
-        public int Puntos
+        public int getPuntos()
         {
-            get { return puntos; }
+            return this.puntos;
         }
 
-        public string ImagenUrl
+        public string getImagenUrl()
         {
-            get { return imagenUrl; }
+             return this.imagenUrl; 
+        }
+
+        public int getStock()
+        {
+            return this.stock;
         }
 
 
+        //Setters
         public void setNombre(string nombre)
         {
             if (!string.IsNullOrEmpty(nombre))
