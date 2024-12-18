@@ -240,6 +240,7 @@
     <Compile Include="Clases\Cliente.cs" />
     <Compile Include="Clases\PawsClub.cs" />
     <Compile Include="Clases\Producto.cs" />
+    <Compile Include="Clases\ProductoStock.cs" />
     <Compile Include="CrearCuenta.aspx.cs">
       <DependentUpon>CrearCuenta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

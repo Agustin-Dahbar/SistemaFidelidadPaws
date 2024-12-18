@@ -31,7 +31,7 @@ namespace SistemaFidelidadPaws
                 if (Master != null)
                 {
                     // Llamar directamente al método OcultarBusqueda de la MasterPage
-                    ((SiteMaster)Master).OcultarBusqueda();
+                    //((SiteMaster)Master).OcultarBusqueda();
                 }
 
                 //Creamos la lista de los productos a mostrarse en el repeaer

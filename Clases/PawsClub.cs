@@ -8,15 +8,15 @@ namespace SistemaFidelidadPaws.Clases
     public class PawsClub
     {
         // Cambiado para que productosStock sea un arreglo bidimensional [nombre, cantidad]
-        private List<string[]> productosStock;
-        private List<Producto> productos;
         private List<Cliente> clientes;
+        private List<Producto> productos;
+        private List<ProductoStock> productosStock;
 
         // Constructor
         public PawsClub()
         {
             this.productos = new List<Producto>();
-            this.productosStock = new List<string[]>();  // Inicialización de productosStock
+            this.productosStock = new List<ProductoStock>();  // Inicialización de productosStock
             this.clientes = new List<Cliente>();
         }
 
@@ -67,17 +67,18 @@ namespace SistemaFidelidadPaws.Clases
         }
 
         //Busca el producto en la lista de productos generales
-        private Producto buscarProductoEnStock(string nombreProducto)
+        private ProductoStock buscarProductoEnStock(string nombreProducto)
         {
-            Producto encontrado = null;  // Variable para almacenar el producto encontrado
+            ProductoStock encontrado = null;  // Variable para almacenar el producto encontrado
             int i = 0;
 
             while (i < this.productosStock.Count && encontrado == null)
             {
-                if (this.productosStock[i][0].Equals(nombreProducto))
+                ProductoStock iterado = this.productosStock[i];
+
+                if (this.productosStock.Equals(nombreProducto))
                 {
-                    // Crear un nuevo producto con el nombre y la cantidad en stock
-                    encontrado = new Producto(nombreProducto, int.Parse(this.productosStock[i][1]));
+                    encontrado = this.productosStock[i];
                 }
                 else
                 {
@@ -88,106 +89,157 @@ namespace SistemaFidelidadPaws.Clases
             return encontrado; // Solo un return al final
         }
 
-
-        // Método que devuelve cuántas unidades quedan de un producto
+        // Método que devuelve cuántas unidades de un producto hay en stock.
         public int cuantoStock(string nombreProducto)
         {
+            //Verificamos que exista el producto en el catálogo.
             Producto producto = buscarProducto(nombreProducto);
             int cantidadStock = 0;
 
-            if (producto == null)
+            if (producto != null) //Si existe
+            {
+                //Verificamos que este en stock 
+                ProductoStock encontradoEnStock = buscarProductoEnStock(nombreProducto);
+
+                if (encontradoEnStock != null) //Si está en stock
+                {
+                    // Obtener la cantidad.
+                    cantidadStock = encontradoEnStock.getCantidadEnStock();
+                    
+                }
+                else //Si no
+                {
+                    Console.WriteLine("Producto no disponible en stock.");
+                }
+            }
+            else //Si no existe 
             {
                 Console.WriteLine("Producto no encontrado.");
             }
-            else
-            {
-                // Usar el mismo método de búsqueda para buscar en el stock
-                Producto encontradoEnStock = buscarProductoEnStock(nombreProducto);
 
-                if (encontradoEnStock == null)
-                {
-                    Console.WriteLine("Producto no disponible en stock.");
-                    cantidadStock = 0; // Si no está en stock
-                }
-                else
-                {
-                    // Si se encuentra, obtener la cantidad de stock
-                    cantidadStock = int.Parse(encontradoEnStock.getStock().ToString());
-                }
-            }
-
-            return cantidadStock; ; // Si no se encuentra en stock, retorna 0
+            return cantidadStock;  // Si no se encuentra en stock, retorna 0
         }
 
-        // Getters
+
+        // Getters de las listas.
         public List<Cliente> getClientes()
         {
             return this.clientes;
         }
-
-        public Cliente getCliente(string nombreUsuario)
-        {
-            return buscarCliente(nombreUsuario);
-        }
-
         public List<Producto> getProductos()
         {
             return this.productos;
         }
 
-        public List<string[]> ProductosStock()
+        public List<ProductoStock> getProductoStock()
         {
             return this.productosStock;
         }
 
-        // Adds
+        //Getters de las entidades de la lista.
+        public Cliente getCliente(string nombreUsuario)
+        {
+            return buscarCliente(nombreUsuario); 
+        }
+        public Producto getProducto(string nombreProducto)
+        {
+            return buscarProducto(nombreProducto); 
+        }
+        public ProductoStock getProductoEnStock(string nombreProducto)
+        {
+            return buscarProductoEnStock(nombreProducto); 
+        }
+
+
+        // Add´s
+
+        //Cliente
         public void addCliente(Cliente cliente)
         {
-            if (cliente != null)
+            if (cliente != null) // Si el cliente no es nulo
             {
-                this.clientes.Add(cliente);
+                // Verificamos si el cliente ya está en la lista
+                Cliente encontrado = buscarCliente(cliente.getNombreUsuario()); 
+
+                if (encontrado != null) // Si ya existe
+                {
+                    Console.WriteLine("El cliente ya está en la lista.");
+                }
+                else // Si no existe
+                {
+                    this.clientes.Add(cliente); // Lo agregamos
+                }
             }
-            else
+            else // Si el cliente es nulo
             {
                 Console.WriteLine("El cliente es nulo");
             }
         }
 
+
+        //Producto
         public void addProducto(Producto producto)
         {
-            if (producto != null)
+            if (producto != null) //Si el producto no es nulo
             {
-                this.productos.Add(producto);
-            }
-            else
-            {
-                Console.WriteLine("El producto es nulo");
-            }
-        }
+                //Verificamos si existe en la lista de productos para evitar generar duplicados
+                Producto encontrado = buscarProducto(producto.getNombre());
 
-        public void addProductoStock(string nombreProducto, int cantidad)
-        {
-            // Buscar si el producto ya está en stock
-            bool encontrado = false;
-            foreach (var item in this.productosStock)
-            {
-                if (item[0].Equals(nombreProducto))
+                if(encontrado != null) //Si existe 
                 {
-                    // Si ya existe, actualizamos la cantidad
-                    item[1] = (int.Parse(item[1]) + cantidad).ToString();
-                    encontrado = true;
-                    break;
+                    Console.WriteLine("El producto ya está en la lista."); //Lo informamos
+                }
+                else //Si no
+                {
+                    this.productos.Add(producto); //Lo agregamos
                 }
             }
-
-            // Si no se encuentra el producto, lo agregamos
-            if (!encontrado)
+            else //Si es nulo
             {
-                this.productosStock.Add(new string[] { nombreProducto, cantidad.ToString() });
+                Console.WriteLine("El producto es nulo"); //Lo informamos
             }
         }
 
-        // Deletes
+        //ProductoStock
+        public void addProductoEnStock(ProductoStock productoStock)
+        {
+            if (productoStock != null) //Si el producto no es nulo
+            {
+                //Verificamos si existe en la lista 
+                ProductoStock encontrado = buscarProductoEnStock(productoStock.getNombreProducto());
+
+                if (encontrado != null) //Si existe 
+                {
+                    Console.WriteLine("El producto ya está en stock."); //Lo informamos
+                }
+                else //Si no
+                {
+                    this.productosStock.Add(productoStock); //Lo agregamos
+                }
+            }
+            else //Si es nulo
+            {
+                Console.WriteLine("El producto es nulo"); //Lo informamos
+            }
+        }
+
+        //Agrega un producto en stock o actualiza su cantidad si ya está en la lista.
+        public void addProductoStock(string nombreProducto, int cantidad)
+        {
+            ProductoStock encontrado = buscarProductoEnStock(nombreProducto);
+
+            if (encontrado != null) //Si lo encontramos
+            {
+                encontrado.setCantidadEnStock(encontrado.getCantidadEnStock() + cantidad); //Actualizamos su cantidad
+            }
+            else //Si no 
+            {
+                productosStock.Add(new ProductoStock(nombreProducto, cantidad)); //Lo agregamos creando la entidad.
+            }
+        }
+        
+        // Deletes de ciertas entidades en las listas.
+        //Clientes
         public void deleteCliente(string nombreUsuario)
         {
             Cliente encontrado = buscarCliente(nombreUsuario); // buscamos al cliente por su nombre usuario, devuelve su instancia Cliente o null.
@@ -199,6 +251,36 @@ namespace SistemaFidelidadPaws.Clases
             else
             {
                 Console.WriteLine("Nombre de usuario incorrecto");
+            }
+        }
+
+        //Productos
+        public void deleteProducto(string nombreProducto)
+        {
+            Producto encontrado = buscarProducto(nombreProducto);
+
+            if (encontrado != null) 
+            {
+                this.productos.Remove(encontrado); 
+            }
+            else
+            {
+                Console.WriteLine("Nombre producto incorrecto");
+            }
+        }
+
+        //Productos en stock
+        public void deleteProductoEnStock(string nombreProductoStock)
+        {
+            ProductoStock encontrado = buscarProductoEnStock(nombreProductoStock);
+
+            if (encontrado != null)
+            {
+                this.productosStock.Remove(encontrado);
+            }
+            else
+            {
+                Console.WriteLine("Nombre producto incorrecto");
             }
         }
     }

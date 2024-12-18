@@ -6,7 +6,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title><%: Page.Title %> - Sistema de fidelidad Paws</title>
 
     <asp:PlaceHolder runat="server">
@@ -48,6 +48,7 @@
         </asp:ScriptManager>
 
     <header class="d-flex">
+        
         <!--BUSCADOR-->
         <div id="containerBuscador">
             <input runat="server" id="txtBusqueda" class="input-header form-control"  autocomplete="off" type="search" name="q" placeholder="Buscar" style="border:none; border-bottom: 2px solid lightblue">
@@ -75,9 +76,6 @@
         <!--Navbar-->
         <div class="d-flex justify-content-center">
             <nav class="navbar navbar-expand-lg">
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
                 <ul id="ul" class="navbar-nav">
                     <hr style="border: 1px solid #ff6a00; margin: 5px 0;">
                     <li class="nav-item">
@@ -100,8 +98,7 @@
             </nav>
         </div>
 
-
-
+        <!---Lo que heredaremos de los forms-->
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
@@ -110,10 +107,17 @@
                 <p>&copy; <%: DateTime.Now.Year %> - Sistema de Fidelidad Paws</p>
             </footer>
         </div>
+
     </form>
     
     <!--CSS-->
     <style>
+
+        *
+        {
+            box-sizing:border-box;
+        }
+
         a
         {
             font-size:13px;

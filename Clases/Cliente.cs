@@ -39,6 +39,7 @@ namespace SistemaFidelidadPaws.Clases
             setContraseña(contraseña);
             setPuntos(puntos);
             setSaldo(saldo);
+            this.productosAdquiridos = new List<Producto>();
         }
 
         //Getters.

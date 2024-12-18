@@ -27,9 +27,9 @@
                 </div>
 
                 <!--Contenedor de la tarjeta y el buscador de productos-->
-                <div style="display:flex; position:relative">
+                <div style="position: relative; display: flex; align-items: center; justify-content: center;">
                     <!--Tarjeta de usuario con su nombre y puntos.-->
-                    <div id="datosUsuario" class="card text-center mt-4 mb-4" style="border: 2px solid #ff6a00; background-color: #fff5e6; width:20%; margin-left:80%;">
+                    <div id="datosUsuario" class="card text-center mt-4 mb-4 d-flex" style="margin-left:60%;border: 2px solid #ff6a00;background-color: #fff5e6; width:30%;">
                         <div class="card-body">
                             <h4 runat="server" id="bienvenidaUsuario" class="card-title" style="color:#ff6a00; font-family:Calibri; font-weight:800">
                                 <!-- ¡Bienvenido, <%# Eval("nombreUsuario") %>! No es necesario ya que lo asignamos en el backend-->
@@ -41,12 +41,12 @@
                     </div>
 
                 <!--Buscador de productos-->
-                    <input id="txtBuscarProducto" placeholder="Buscar producto..." style=" height:25%; border-top: none; border-bottom:2px solid #ff6a00; display:flex; position:absolute; bottom:14%; border-left:none; border-right:none;"/>
-                    <button id="button" type="submit" class="btn btn-desktop-search" value="Buscar" aria-label="Buscar" style="position:absolute; left:11.5%; bottom:14%;">
+                    <input id="txtBuscarProducto" placeholder="Buscar producto..." style="border-top: none; border-bottom:2px solid #ff6a00; z-index:7; display:flex; position:absolute; bottom:20%; left:0%; border-left:none; border-right:none;"/>
+                    <!--<button id="button" type="submit" class="btn btn-desktop-search d-flex" value="Buscar" aria-label="Buscar" style="z-index:10; position:absolute; left:12%; bottom:20%;">
                         <svg id="svgLupa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                             <path d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"></path>
                         </svg>                            
-                    </button>
+                    </button> -->
                 </div>
                 <!--Fin contenedor tarjeta y buscador-->
 
@@ -56,19 +56,19 @@
                         <div class="row">
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <div class="col-md-3" style="width:16%;">
-                            <div class="card mb-4" style="border: 2px solid #ff6a00;">
+                        <div class="col-md-3" style="width:32%;">
+                            <div class="card mb-4" style="border: 2px solid #ff6a00;justify-content:space-between; height:95%;">
                                 <!-- Imagen del producto -->
                                 <img src='<%# Eval("ImagenUrl") %>' class="card-img-top" alt="Imagen del producto">
                                 <div class="card-body text-center">
                                     <!-- Nombre del producto -->
-                                    <h5 id="nombreProducto" class="card-title"><%# Eval("Nombre") %></h5>
+                                    <h5 id="nombreProducto" style="font-size:16px;" class="card-title"><%# Eval("Nombre") %></h5>
                                     <!-- Precio del producto -->
                                     <!--<p id="precioProducto" class="card-text">Precio: $<%# Eval("Precio") %></p>-->
                                     <!-- Puntos del producto -->
-                                    <p id="puntosProducto" class="card-text">Puntos: <%# Eval("Puntos") %></p>
+                                    <p id="puntosProducto" style="font-size:14px; margin-bottom:20%;" class="card-text">Puntos: <%# Eval("Puntos") %></p>
                                     <!-- Botón para realizar el canje-->
-                                    <asp:Button ID="btnCanjear" runat="server" Text="Canjear" CssClass="btn btn-primary mt-2" OnCommand="btnCanjear_Command" CommandArgument='<%# Eval("Nombre") %>' style="background-color:#ff6a00;" />
+                                    <asp:Button ID="btnCanjear" runat="server" Text="Canjear" CssClass="btn btn-primary" OnCommand="btnCanjear_Command" CommandArgument='<%# Eval("Nombre") %>' style="background-color:#ff6a00;"/>
                                 </div>
                             </div>
                         </div>
@@ -103,6 +103,12 @@
 
             <!--CSS-->
             <style>
+
+                * 
+                {
+                    box-sizing:border-box;
+                }
+
                 #titulo
                 {
                     font-family: Calibri;
