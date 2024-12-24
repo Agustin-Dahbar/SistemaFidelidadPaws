@@ -42,6 +42,20 @@ namespace SistemaFidelidadPaws.Clases
             this.productosAdquiridos = new List<Producto>();
         }
 
+        //Metodos
+        public void addProducto(Producto producto)
+        {
+            if(producto != null)
+            {
+                this.productosAdquiridos.Add(producto);
+            }
+            else
+            {
+                Console.WriteLine("El producto no puede ser nulo");
+            }
+        }
+
+
         //Getters.
         public string getNombreUsuario()
         {

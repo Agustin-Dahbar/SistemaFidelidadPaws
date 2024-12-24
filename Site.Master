@@ -5,29 +5,29 @@
 <html lang="es">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title><%: Page.Title %> - Sistema de fidelidad Paws</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title><%: Page.Title %> - Sistema de fidelidad Paws</title>
 
-    <asp:PlaceHolder runat="server">
-        <%: Scripts.Render("~/bundles/modernizr") %>
-    </asp:PlaceHolder>
+<asp:PlaceHolder runat="server">
+    <%: Scripts.Render("~/bundles/modernizr") %>
+</asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<webopt:bundlereference runat="server" path="~/Content/css" />
+<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
-    <!-- CSS de Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <!-- JS de Bootstrap (incluye popper y bundle) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap (incluye popper y bundle) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
+<link rel="stylesheet" href="MediaQuerys/Site.css" />
 
 </head>
 
-
 <body>
-    <form runat="server">
+    <form runat="server" style="width:100vw; height:100vh; display:flex; position:relative">
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -47,12 +47,11 @@
             </Scripts>
         </asp:ScriptManager>
 
-    <header class="d-flex">
-        
+    <header class="d-flex">    
         <!--BUSCADOR-->
-        <div id="containerBuscador">
+        <div id="containerBuscador" class="d-flex">
             <input runat="server" id="txtBusqueda" class="input-header form-control"  autocomplete="off" type="search" name="q" placeholder="Buscar" style="border:none; border-bottom: 2px solid lightblue">
-            <button runat="server" id="button" type="submit" class="btn btn-desktop-search" value="Buscar" aria-label="Buscar" style="position:absolute; left:80%;">
+            <button runat="server" id="button" type="submit" class="btn btn-desktop-search" value="Buscar" aria-label="Buscar" style="position:absolute;left:85%;">
                 <svg id="svgLupa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                     <path d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"></path>
                 </svg>                            
@@ -70,12 +69,10 @@
                 <hr style="border: 1px solid #3589bf; margin: 5px 0px;"/>
                 <a href="IniciarSesion.aspx">INICIAR SESIÓN</a>
         </div>
-    
     </header>
 
         <!--Navbar-->
-        <div class="d-flex justify-content-center">
-            <nav class="navbar navbar-expand-lg">
+            <nav class="navbar-expand-lg d-flex" style="width:40%; position:absolute; left:30%; top: 26%;">
                 <ul id="ul" class="navbar-nav">
                     <hr style="border: 1px solid #ff6a00; margin: 5px 0;">
                     <li class="nav-item">
@@ -96,14 +93,13 @@
                     <hr style="border: 1px solid #ff6a00; margin: 5px 0;">
                 </ul>
             </nav>
-        </div>
 
         <!---Lo que heredaremos de los forms-->
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
+            <footer style="margin-top:200%;">
+                <hr />
                 <p>&copy; <%: DateTime.Now.Year %> - Sistema de Fidelidad Paws</p>
             </footer>
         </div>
@@ -126,11 +122,6 @@
 
         }
 
-        .navbar
-        {
-            width:50%;
-            margin-top:11.5%;
-        }
 
         
         .nav-link 
@@ -155,7 +146,6 @@
         {
             border-top: 2px solid #ff6a00;
             border-bottom: 2px solid #ff6a00;
-            padding: 10px 20px;
         }
 
         #ul

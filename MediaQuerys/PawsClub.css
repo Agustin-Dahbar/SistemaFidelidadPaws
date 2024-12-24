@@ -1,0 +1,220 @@
+﻿body 
+{
+    margin:0;
+
+}
+
+#titulo 
+{
+    color:#ff6a00;
+    position:absolute;
+    top:41%; 
+    left:10%;
+}
+
+#subtitulo 
+{
+    color: #ff6a00;
+    position: absolute;
+    top: 55%;
+    left: 42%;
+}
+
+#datosUsuario 
+{
+    border: 0px solid #ff6a00;
+    background-color: #fff5e6;
+    position: absolute;
+    top: 65%;
+    left: 75%;
+}
+
+<!--No funciono-->
+#bienvenidaUsuario 
+{
+    color: #ff6a00;
+    font-family: Calibri;
+    font-weight: 800
+}
+
+#puntosUsuario 
+{
+    color: #ff6a00;
+    font-size: 1.1rem;
+    font-family: Calibri
+}
+
+
+.btnVerProductos 
+{
+    margin-left: 81.8%;
+    background-color: #fff5e6;
+    color: #ff6a00;
+    margin-top:42.5%;
+    border:none;
+    padding:10px;
+    font-family:Calibri
+}
+
+
+#productosModalLabel 
+{
+    font-family: Tahoma;
+    color: #ff6a00;
+    background-color: #fff5e6;
+}
+
+
+#txtBuscarProducto 
+{
+    border-top: none;
+    border-bottom: 2px solid #ff6a00;
+    z-index: 7;
+    position: absolute;
+    top: 82%;
+    left: 10%;
+    border-left: none;
+    border-right: none;
+}
+
+
+.button 
+{
+    z-index: 10;
+    position: absolute;
+    left: 19.75%;
+    bottom: 14%;
+}
+
+#contenedorRpt 
+{
+    position: absolute;
+    top: 85%;
+    left: 10%;
+    right: 10%;
+}
+
+#colRptProd 
+{
+    margin-top: 3%;
+}
+
+#cardRptProd 
+{
+    border: 2px solid #ff6a00;
+}
+
+#nombreProducto 
+{
+    font-size:16px;
+}
+
+#puntosProducto 
+{
+    font-size: 14px;
+    margin-bottom: 0%;
+}
+
+<!--No funcionó-->
+#btnCanjear 
+{
+    background-color: #ff6a00;
+    margin-left: 2%;
+    margin-top: 10%;
+}
+
+#mensajeCanje 
+{
+    color: #ff6a00;
+    border-bottom: 1px solid #ff6a00;
+    font-size: 18px;
+    font-family: Bahnschrift;
+    display: flex;
+    position: absolute;
+    top: 81%;
+    left: 26%;
+}
+
+
+/* Media Query para tablets */
+@media (max-width: 1024px) and (min-width: 600px) 
+{
+
+}
+
+
+
+
+/* Media Query para celular*/
+@media (max-width: 599px) 
+{
+    #titulo
+    {
+        width:70%;
+        font-size:22px;
+        top:60%
+    }    
+
+    #subtitulo
+    {
+        width:60%;
+        font-size:14px;
+        top:70%;
+        left:20%;
+    }
+
+    #datosUsuario
+    {
+        width:30%;
+        top:80%;
+        left:55%;
+    }
+
+    .bienvenidaUsuario
+    {
+        font-size:18px;
+    }
+
+    .puntosUsuario
+    {
+        font-size:14px;
+    }
+
+    .btnVerProductos 
+    {
+        width:36%;
+        margin-left: 55%;
+        font-size:11px;
+        background-color: #fff5e6;
+        color: #ff6a00;
+        margin-top: 212.5%;
+        border: none;
+    }
+
+    #txtBuscarProducto
+    {
+        width:35%;
+        font-size:14px;
+        top:99%;
+
+    }
+    .button
+    {
+        width:10%;
+        height:2%;
+        left:36%;
+        top:98.5%;
+    }
+
+    #contenedorRpt
+    {
+        width:86%;
+        margin-top:40%;
+    }
+
+    .colRptProd
+    {
+        width:30%;
+    }
+
+}

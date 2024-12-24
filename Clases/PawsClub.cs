@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace SistemaFidelidadPaws.Clases
@@ -238,6 +239,18 @@ namespace SistemaFidelidadPaws.Clases
             }
         }
         
+        //Add lista 
+        public void addListaProductos(List<Producto> lista)
+        {
+            if(lista != null)
+            {
+                this.productos = lista;
+            }
+            else
+            {
+                Console.WriteLine("La lista no puede ser nula");
+            }
+        }
         // Deletes de ciertas entidades en las listas.
         //Clientes
         public void deleteCliente(string nombreUsuario)
@@ -283,5 +296,44 @@ namespace SistemaFidelidadPaws.Clases
                 Console.WriteLine("Nombre producto incorrecto");
             }
         }
+
+
+
+        // Método que busca productos en stock utilizando una expresión regular
+        // y devuelve un solo producto o una lista si hay coincidencias parciales
+        public object buscarProductoEnStockConExpresion(string nombreProducto)
+        {
+            List<Producto> encontrados = new List<Producto>();  // Lista para almacenar productos encontrados
+
+            // Creamos una expresión regular para buscar el nombre del producto (case-insensitive)
+            string pattern = @"\b" + Regex.Escape(nombreProducto) + @"\b";  // Busca la palabra completa, sin considerar mayúsculas/minúsculas
+            Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
+
+            // Recorrer la lista de productos en stock
+            foreach (Producto producto in this.productos)
+            {
+                // Si el nombre del producto coincide con la expresión regular
+                if (regex.IsMatch(producto.getNombre()))
+                {
+                    encontrados.Add(producto);  // Agregar el producto a la lista de encontrados
+                }
+            }
+
+            // Si hay más de un producto en la lista, se devuelve la lista
+            if (encontrados.Count > 1)
+            {
+                return encontrados;  // Devuelve la lista de productos encontrados
+            }
+            // Si solo se encuentra un producto, se devuelve ese producto
+            else if (encontrados.Count == 1)
+            {
+                return encontrados[0];  // Devuelve un solo producto
+            }
+            else
+            {
+                return null; // Si no se encontró ningún producto, se devuelve null
+            }
+        }
+
     }
 }

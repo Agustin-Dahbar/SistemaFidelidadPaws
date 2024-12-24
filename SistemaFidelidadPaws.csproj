@@ -137,6 +137,8 @@
     <Content Include="Css\bootstrap.min.css" />
     <Content Include="Css\bootstrap.rtl.css" />
     <Content Include="Css\bootstrap.rtl.min.css" />
+    <Content Include="MediaQuerys\PawsClub.css" />
+    <Content Include="MediaQuerys\Site.css" />
     <Content Include="PawsClub.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -241,6 +243,7 @@
     <Compile Include="Clases\PawsClub.cs" />
     <Compile Include="Clases\Producto.cs" />
     <Compile Include="Clases\ProductoStock.cs" />
+    <Compile Include="Clases\Test.cs" />
     <Compile Include="CrearCuenta.aspx.cs">
       <DependentUpon>CrearCuenta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
